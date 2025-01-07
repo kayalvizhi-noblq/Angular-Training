@@ -1,0 +1,12 @@
+<router-outlet />
+
+<h3>hello angular</h3>
+
+<app-demo [appTitle]="title"></app-demo>
+
+<app-count 
+   (incrementChange)="onChangeIncrement()" 
+   [count]="count"
+   (decrementChange)="onChangeDecrement()"
+   >
+</app-count>
