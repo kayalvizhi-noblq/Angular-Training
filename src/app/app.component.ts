@@ -1,28 +1,42 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DemoComponent } from './common/demo/demo.component';
-import { CountComponent } from './common/count/count.component';
-
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet,DemoComponent,CountComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss', './appstyle.component.scss']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'angular-test';
-
+  timer:any;
   count = 0;
 
+  constructor(){
+    console.log('construct')
+  }
+
+  ngOnInit() {
+    console.log('ngoninit')
+    this.timer = setTimeout(() =>{
+      this.title='changed title'
+    },3000)
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit: View is initialized');
+    const element = document.querySelector('h3'); 
+    if (element) {
+      element.style.color = 'red'; 
+    }
+  }
+
+  // ngOnDestroy() {
+  //   console.log('ngOnDestroy: Component is being destroyed');
+  // }
+
   onChangeIncrement() {
-    console.log('click')
     this.count++
   }
 
   onChangeDecrement() {
     this.count--
   }
-
-
 }

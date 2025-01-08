@@ -3,11 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-test": {
+    "angular-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-test",
+            "outputPath": "dist/angular-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-test:build:production"
+              "buildTarget": "angular-app:build:production"
             },
             "development": {
-              "buildTarget": "angular-test:build:development"
+              "buildTarget": "angular-app:build:development"
             }
           },
           "defaultConfiguration": "development"
