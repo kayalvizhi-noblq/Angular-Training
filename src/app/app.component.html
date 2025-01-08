@@ -1,12 +1,15 @@
 <router-outlet />
 
-<h3>Angular App</h3>
-
-<app-demo [appTitle]="title"></app-demo>
-
-<app-count 
+@if (show) {
+   <app-count
+   [appTitle]="title"
    (incrementChange)="onChangeIncrement()" 
    [count]="count"
    (decrementChange)="onChangeDecrement()"
+   (hideClick)="showButton()"
    >
-</app-count>
+   </app-count>
+} 
+@else {<app-title
+   (showCick)="showButton()"
+   ></app-title>}

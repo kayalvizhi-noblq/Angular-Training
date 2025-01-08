@@ -3,14 +3,14 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './common/demo/demo.component';
 import { CountComponent } from './common/count/count.component';
+import { TitleComponent } from './common/title/title.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
     CountComponent,
+    TitleComponent,
 
   ],
   imports: [

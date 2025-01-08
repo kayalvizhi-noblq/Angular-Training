@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit{
   title = 'Total Count';
   count = 0;
+  show : boolean = false;
 
   constructor(){
     console.log('construct')
@@ -21,15 +22,7 @@ export class AppComponent {
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit: View is initialized');
-    const element = document.querySelector('h3'); 
-    if (element) {
-      element.style.color = 'red'; 
-    }
   }
-
-  // ngOnDestroy() {
-  //   console.log('ngOnDestroy: Component is being destroyed');
-  // }
 
   onChangeIncrement() {
     this.count++
@@ -37,5 +30,9 @@ export class AppComponent {
 
   onChangeDecrement() {
     this.count--
+  }
+
+  showButton(){
+    this.show = !this.show;
   }
 }
