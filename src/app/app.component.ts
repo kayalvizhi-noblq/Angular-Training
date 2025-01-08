@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-test';
-  timer:any;
+  title = 'Total Count';
   count = 0;
 
   constructor(){
@@ -15,8 +14,8 @@ export class AppComponent {
 
   ngOnInit() {
     console.log('ngoninit')
-    this.timer = setTimeout(() =>{
-      this.title='changed title'
+    setTimeout(() =>{
+      this.title='Total Count(Number)'
     },3000)
   }
 

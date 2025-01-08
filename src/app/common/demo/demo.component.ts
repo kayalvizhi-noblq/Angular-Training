@@ -15,5 +15,4 @@ ngOnInit(): void {
 ngOnChanges(changes: SimpleChanges): void {
     console.log('demo changes',changes)
 }
-
 }
