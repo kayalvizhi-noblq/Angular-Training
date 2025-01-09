@@ -1,7 +1,45 @@
 <div class="container">
-<div class="header"><h1>{{appTitle}}</h1><button class="button-style"(click)="onButtonHide()">X</button></div>
+  <div class="header">
+    <h3>{{appTitle}}</h3>
+    <button class="button-style" (click)="onButtonHide()">X</button>
+  </div>
+<br/>
 
-<span>count : {{count}}</span>
-<button (click)="increment()">+</button>
-<button (click)="decrement()">-</button>
+  <div class="d-flex justify-content-between">
+     <div></div>
+    <button>User Details</button>
+  </div>
+  <br/>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of data">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.website }}</td>
+        <td>{{ user.company.name }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="editUser(user)">
+            Edit
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
