@@ -24,8 +24,15 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
   @Output() hideClick = new EventEmitter();
 
   data: any;
+  isModalOpen: boolean = false;
+  user = { id: null, name: '', userName:'', email: '', phone: '', website:'', company:''};
 
-  constructor(private apiService: APIService) {}
+  constructor(private apiService: APIService) {
+    const storedData = localStorage.getItem('users');
+    if (storedData) {
+      this.data = JSON.parse(storedData);
+    }
+  }
 
   increment() {
     this.incrementChange.emit();
@@ -67,5 +74,34 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
 
   editUser(user: any): void {
     console.log('Editing user:', user);
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+    this.user = { id: null, name: '', userName: '', email: '', phone: '', website: '', company: '' };
+  }
+
+  closeModal() {
+    this.isModalOpen = false; 
+  }
+
+  saveUser() {
+    if (this.user.name && this.user.userName && this.user.email && this.user.phone && this.user.company) {
+      this.user.id = this.data.length > 0 ? this.data[this.data.length - 1].id + 1 : 1;
+      this.data.push(this.user);
+      localStorage.setItem('users', JSON.stringify(this.data));
+      this.closeModal();
+    } else {
+      alert('Please fill in all required fields');
+    }
+    this.resetForm()
+  }
+
+  // deleteUser(id: number) {
+  //   this.data = this.data.filter(user => user.id !== id);
+  // }
+
+  resetForm() {
+    this.user = { id:null, name: '', userName:'', email: '', phone: '', website:'', company:''}; 
   }
 }

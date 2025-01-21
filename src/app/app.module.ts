@@ -7,6 +7,7 @@ import { CountComponent } from './common/count/count.component';
 import { TitleComponent } from './common/title/title.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateModelComponent } from './common/create-model/create-model.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,9 @@ import { CreateModelComponent } from './common/create-model/create-model.compone
     CountComponent,
     TitleComponent,
     CreateModelComponent,
-
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

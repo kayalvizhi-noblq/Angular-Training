@@ -1,15 +1,12 @@
 <router-outlet />
 
 @if (show) {
-   <app-count
-   [appTitle]="title"
-   (incrementChange)="onChangeIncrement()" 
-   [count]="count"
-   (decrementChange)="onChangeDecrement()"
-   (hideClick)="showButton()"
-   >
-   </app-count>
-} 
-@else {<app-title
-   (showCick)="showButton()"
-   ></app-title>}
+<app-count
+  [appTitle]="title"
+  (incrementChange)="onChangeIncrement()"
+  [count]="count"
+  (decrementChange)="onChangeDecrement()"
+  (hideClick)="showButton()"
+>
+</app-count>
+} @else {<app-title (showCick)="showButton()"></app-title>}

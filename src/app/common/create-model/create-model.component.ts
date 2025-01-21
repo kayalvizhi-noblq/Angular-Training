@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-model',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './create-model.component.scss'
 })
 export class CreateModelComponent {
+  user = { name: '', email: '' }; 
 
+  @Output() userAdded = new EventEmitter<any>();
+
+  saveUser() {
+    if (this.user.name && this.user.email) {
+      this.userAdded.emit(this.user);
+      this.resetForm();
+    }
+  }
+
+  resetForm() {
+    this.user = { name: '', email: '' };
+  }
 }

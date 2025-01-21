@@ -7,7 +7,8 @@
 
   <div class="d-flex justify-content-between">
      <div></div>
-    <button>User Details</button>
+     <!-- <a routerLink="/form" routerLinkActive="active">Form</a> -->
+    <button class="btn btn-primary" (click)="openModal()">Add User Details</button>
   </div>
   <br/>
   <table class="table table-bordered table-striped">
@@ -43,3 +44,86 @@
     </tbody>
   </table>
 </div>
+
+<div *ngIf="isModalOpen" class="modal fade show d-block" tabindex="-1" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add User Details</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Name</label>
+            <input
+              type="text"
+              id="userName"
+              class="form-control"
+              [(ngModel)]="user.name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="usersName" class="form-label">User Name</label>
+            <input
+              type="text"
+              id="usersName"
+              class="form-control"
+              [(ngModel)]="user.userName"
+              name="userName"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="userEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              id="userEmail"
+              class="form-control"
+              [(ngModel)]="user.email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="userPhone" class="form-label">Phone</label>
+            <input
+              type="phone"
+              id="userPhone"
+              class="form-control"
+              [(ngModel)]="user.phone"
+              name="phone"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="userWebsite" class="form-label">Website</label>
+            <input
+              type="website"
+              id="userWebsite"
+              class="form-control"
+              [(ngModel)]="user.website"
+              name="website"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="userCompany" class="form-label">Company</label>
+            <input
+              type="company"
+              id="userCompany"
+              class="form-control"
+              [(ngModel)]="user.company"
+              name="company"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
+      </div>
+    </div>
