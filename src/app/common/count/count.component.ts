@@ -25,7 +25,7 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
 
   data: any;
   isModalOpen: boolean = false;
-  user = { id: null, name: '', userName:'', email: '', phone: '', website:'', company:''};
+  user = { id: null, name: '', username:'', email: '', phone: '', website:'', company:''};
 
   constructor(private apiService: APIService) {
     const storedData = localStorage.getItem('users');
@@ -78,7 +78,7 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
 
   openModal() {
     this.isModalOpen = true;
-    this.user = { id: null, name: '', userName: '', email: '', phone: '', website: '', company: '' };
+    this.user = { id: null, name: '', username: '', email: '', phone: '', website: '', company: '' };
   }
 
   closeModal() {
@@ -86,7 +86,7 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   saveUser() {
-    if (this.user.name && this.user.userName && this.user.email && this.user.phone && this.user.company) {
+    if (this.user.name && this.user.username && this.user.email && this.user.phone && this.user.company) {
       this.user.id = this.data.length > 0 ? this.data[this.data.length - 1].id + 1 : 1;
       this.data.push(this.user);
       localStorage.setItem('users', JSON.stringify(this.data));
@@ -97,11 +97,7 @@ export class CountComponent implements OnInit, OnChanges, OnDestroy {
     this.resetForm()
   }
 
-  // deleteUser(id: number) {
-  //   this.data = this.data.filter(user => user.id !== id);
-  // }
-
   resetForm() {
-    this.user = { id:null, name: '', userName:'', email: '', phone: '', website:'', company:''}; 
+    this.user = { id:null, name: '', username:'', email: '', phone: '', website:'', company:''}; 
   }
 }
